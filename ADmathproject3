@@ -1,0 +1,29 @@
+.386
+.MODEL flat, stdcall
+option casemap : none
+
+include \masm32\include\masm32rt.inc
+
+.data
+MessageText db "Hello, and welcome to our math program", 0
+CaptionText db "Please read the following 2 numbers and add them we will then tell you whether the answer was correct or not", 0
+var1	DWORD 25
+var2	DWORD 203
+sum1	DWORD 228
+.data?
+answer1 DWORD ?
+.code
+start:
+main proc
+
+invoke MessageBox, 0, ADDR MessageText, ADDR CaptionText, MB_OK
+;---------------------------------------------------------------------------------------------- -
+
+.if (answer1 == sum1)
+  print "That was correct goodjob!", 0
+.else
+  print "Incorrect but good attempt!", 0
+
+INVOKE ExitProcess, 0
+main ENDP
+END start
